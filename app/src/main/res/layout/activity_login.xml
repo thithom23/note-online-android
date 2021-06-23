@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/miengrong_foreground"
+    android:scaleType = "centerCrop"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="182dp"
+        android:layout_height="120dp"
+        android:ems="10"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:inputType="numberPassword"
+        android:maxLength="8"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="268dp"
+        android:layout_height="88dp"
+        android:text="Đăng nhập"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintVertical_bias="0.133" />
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="268dp"
+        android:layout_height="88dp"
+        android:text="Đăng ký"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.133" />
+</androidx.constraintlayout.widget.ConstraintLayout>
