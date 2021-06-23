@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/meme_cat" />
+        app:srcCompat="@mipmap/profile_image" />
 
     <TextView
         android:id="@+id/accountName"

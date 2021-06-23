@@ -60,9 +60,6 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        // name = getArguments().getString("NAME");
-
         MainActivity mainActivity = (MainActivity) getActivity();
         id = mainActivity.getId();
         name = mainActivity.getName();
@@ -164,6 +161,7 @@ public class HomeFragment extends Fragment {
 
     private void receiveNote() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        // gọi danh sách các note với id tài khoản bằng API GET
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constant.NOTE_URL_GET_ALL + id,
                 new Response.Listener<String>() {
                     @Override
@@ -174,8 +172,10 @@ public class HomeFragment extends Fragment {
                                 JSONObject jsonObject = new JSONObject();
                                 jsonObject.put("temporaryName", jsonArray.get(i));
                                 jsonObject = jsonObject.getJSONObject("temporaryName");
+                                // trả về 1 Array Json, đem nó chuyển sang kiểu dữ liệu Note bằng vòng for
                                 Note note = new Note(jsonObject);
                                 listNote.add(note);
+                                // hiển thị nó lên trên view
                                 adapter.notifyDataSetChanged();
                             }
 

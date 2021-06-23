@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     fragobj.setArguments(bundle1);
 
                 }
+                // lấy dữ liệu từ loginActivity gửi qua
             }
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -72,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery,  R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
@@ -90,11 +89,13 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putLong("NOTEID", new Long(0));
                 intent.putExtras(bundle);
                 startActivity(intent);
+                // gửi dữ liệu qua activity Edit để thêm ghi chú
             }
         });
     }
     private void getDetailAccount() {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        // gọi API GET để lấy thông tin tài khoản
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constant.ACCOUNT_GET_INFO_URL + id,
                 new Response.Listener<String>() {
                     @Override
@@ -102,8 +103,10 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("--------------------------", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            // dữ liệu trả về là 1 JsonObject và đem nó đi chuyển sang kiểu dữ liệu account
                             Account account = new Account(jsonObject);
                             if (account.getId()!=null) {
+                                // lấy dữ liệu trả về set lên trên view
                                 txtName.setText(account.getName());
                                 txtBirthDay.setText(account.getBirthDay());
                             }
@@ -128,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.info:
-                Intent openCreateReminderActivity = new Intent(getApplicationContext(), InfoActivity.class);
-                startActivity(openCreateReminderActivity);
+                Intent infoActivity = new Intent(getApplicationContext(), InfoActivity.class);
+                startActivity(infoActivity);
                 return true;
             case R.id.logout:
-                Intent openAboutActivity = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(openAboutActivity);
+                Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(loginActivity);
                 finish();
                 return true;
             default:
@@ -143,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -162,4 +164,6 @@ public class MainActivity extends AppCompatActivity {
     public String getName() {
         return name;
     }
+
+    // tạo 2 phương thức getId và getName để fragment có thể sử dụng lại ID và Name
 }

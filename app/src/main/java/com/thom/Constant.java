@@ -1,5 +1,6 @@
 package com.thom;
 
+// lớp lưu đường dẫn API
 public class Constant {
     public static final String BASE_URL="http://online-note-qnu.herokuapp.com/api";
     public static final String ACCOUNT_URL = BASE_URL+"/account";

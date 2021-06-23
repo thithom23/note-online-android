@@ -41,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent loading = new Intent(LoginActivity.this, Loading.class);
                 startActivity(loading);
+                // mở form loading ra cho dui
                 login(editTextPassword.getText().toString(), LoginActivity.this);
+                // gọi hàm login
             }
         });
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -54,26 +56,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean login(String password, Context context) {
+        // gọi API GET
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constant.LOGIN_URL + password,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        // khi API trả về
                         Log.d("--------------------------", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            // API trả về 1 JsonObject
                             if (jsonObject.getString("id").equals("null")) {
+                                // API có id = null => đăng nhập sai
                                 Toast toast = Toast.makeText(LoginActivity.this,
                                         "Password không đúng", Toast.LENGTH_LONG);
                                 toast.show();
                             } else {
                                 account = new Account(jsonObject);
+                                // chuyển JsonObject sang đối tượng account bằng contructor của Account
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putLong("ACCOUNTID", new Long(account.getId()));
                                 bundle.putString("NAME", new String(account.getName()));
                                 bundle.putString("BIRTHDAY", new String(account.getBirthDay()));
                                 intent.putExtras(bundle);
+                                // gửi dữ liệu sang activitymain
                                 startActivity(intent);
                                 finish();
                             }
@@ -86,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // khi API không trả về
                 Toast toast = Toast.makeText(LoginActivity.this,
                         "Lỗi kết nối", Toast.LENGTH_LONG);
                 toast.show();
@@ -93,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         requestQueue.add(stringRequest);
+        // thêm cuộc gọi API vào Queue
         return true;
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/miengrong_foreground"
+    android:background="@mipmap/login_image_foreground"
     android:scaleType = "centerCrop"
     tools:context=".LoginActivity">
 
