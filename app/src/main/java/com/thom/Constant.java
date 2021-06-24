@@ -7,6 +7,8 @@ public class Constant {
     public static final String LOGIN_URL = ACCOUNT_URL + "/login/";
     public static final String ACCOUNT_GET_INFO_URL = ACCOUNT_URL + "/get-info/";
     public static final String ACCOUNT_CREATE_ACCOUNT = ACCOUNT_URL + "/create-account";
+    public static final String ACCOUNT_UPDATE_INFO = ACCOUNT_URL + "/update-info";
+
 
     public static final String NOTE_URL = BASE_URL+"/note";
     public static final String NOTE_URL_GET_ALL = NOTE_URL + "/get-all/";

@@ -10,7 +10,6 @@
     <string name="menu_edit">Sửa</string>
 
     <string name="menu_home">Trang chủ</string>
-    <string name="menu_gallery">Trang cá nhân</string>
-    <string name="menu_slideshow">Bảo mật</string>
+    <string name="menu_gallery">Thông tin cá nhân</string>
     <string name="title_activity_login">LoginActivity</string>
 </resources>
